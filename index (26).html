@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- SEO -->
+<title>Realitní makléřka [MESTO/REGION] — Cesta k vašemu novému domovu</title>
+<meta name="description" content="Sebevědomá, férová a osobní realitní makléřka v lokalitě [MESTO/REGION]. Bezplatné ocenění, profesionální focení a homestaging, právní i hypoteční servis. Prodáme váš domov s péčí i jistotou." />
+<meta property="og:title" content="Realitní makléřka [MESTO/REGION] — Cesta k vašemu novému domovu" />
+<meta property="og:description" content="Jeden makléř od ocenění po předání klíčů. Jasná domluva, reálné výsledky, péče v každém kroku." />
+<meta property="og:image" content="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1200&q=80" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="cs_CZ" />
+
+<!-- Favicon: dům v červené -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg viewBox='0 0 72 66' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23D8232A' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 34 L36 8 L66 34'/%3E%3Cpath d='M14 31 L14 59 L58 59 L58 31'/%3E%3Cpath d='M30 59 L30 44 L42 44 L42 59'/%3E%3C/g%3E%3C/svg%3E" />
+
+<!-- Raleway -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          cred: '#D8232A',
+          creddark: '#A4161B',
+          ink: '#20242A',
+          mist: '#F4F5F7',
+          line: '#E4E6EA'
+        },
+        fontFamily: {
+          sans: ['Raleway', 'ui-sans-serif', 'system-ui', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Raleway', sans-serif; color: #20242A; background: #FFFFFF; -webkit-font-smoothing: antialiased; }
+
+  /* Viditelný focus pro klávesnici */
+  :focus-visible { outline: 3px solid #D8232A; outline-offset: 3px; border-radius: 4px; }
+
+  /* Sklo POUZE na navbaru */
+  .glass-nav {
+    background: rgba(255,255,255,.72);
+    backdrop-filter: saturate(160%) blur(14px);
+    -webkit-backdrop-filter: saturate(160%) blur(14px);
+    border-bottom: 1px solid rgba(228,230,234,0);
+    transition: box-shadow .35s ease, background .35s ease, border-color .35s ease;
+  }
+  .glass-nav.scrolled {
+    background: rgba(255,255,255,.86);
+    border-bottom-color: #E4E6EA;
+    box-shadow: 0 8px 30px -18px rgba(32,36,42,.45);
+  }
+
+  /* Eyebrow: červená čárka + prostrkaný label */
+  .eyebrow { display:inline-flex; align-items:center; gap:.7rem; font-weight:700; font-size:.74rem; letter-spacing:.2em; text-transform:uppercase; color:#20242A; }
+  .eyebrow::before { content:""; width:34px; height:2px; background:#D8232A; display:inline-block; }
+  .eyebrow.light { color:#FFFFFF; }
+  .eyebrow.center { justify-content:center; }
+
+  /* Karty */
+  .card { background:#fff; border:1px solid #E4E6EA; border-radius:16px; box-shadow:0 1px 2px rgba(32,36,42,.04); transition:transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease, border-color .4s ease; }
+  .card:hover { transform:translateY(-6px); box-shadow:0 24px 50px -28px rgba(32,36,42,.4); border-color:#D8232A33; }
+
+  .btn { display:inline-flex; align-items:center; justify-content:center; gap:.55rem; font-weight:700; letter-spacing:.01em; border-radius:12px; padding:.95rem 1.6rem; transition:transform .25s ease, background .25s ease, color .25s ease, box-shadow .25s ease; will-change:transform; }
+  .btn-primary { background:#D8232A; color:#fff; box-shadow:0 14px 30px -14px rgba(216,35,42,.7); }
+  .btn-primary:hover { background:#A4161B; transform:translateY(-2px); }
+  .btn-outline { border:1.5px solid #20242A; color:#20242A; }
+  .btn-outline:hover { background:#20242A; color:#fff; transform:translateY(-2px); }
+  .btn-outline-light { border:1.5px solid rgba(255,255,255,.55); color:#fff; }
+  .btn-outline-light:hover { background:#fff; color:#20242A; }
+
+  /* Scroll reveal */
+  .reveal { opacity:0; transform:translateY(28px); transition:opacity .8s cubic-bezier(.22,1,.36,1), transform .8s cubic-bezier(.22,1,.36,1); }
+  .reveal.in { opacity:1; transform:none; }
+
+  /* Hero parallax obrázek */
+  .hero-img { will-change:transform; }
+
+  /* Číselná osa procesu */
+  .step-num { font-weight:800; font-size:2.4rem; line-height:1; color:#D8232A; }
+
+  /* Reference slider */
+  .ref-track { display:flex; gap:1.5rem; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; -ms-overflow-style:none; scrollbar-width:none; padding-bottom:.5rem; }
+  .ref-track::-webkit-scrollbar { display:none; }
+  .ref-card { scroll-snap-align:center; flex:0 0 100%; }
+  @media (min-width:768px){ .ref-card { flex:0 0 calc(50% - .75rem); } }
+  @media (min-width:1100px){ .ref-card { flex:0 0 calc(33.333% - 1rem); } }
+
+  .nav-link { position:relative; font-weight:600; color:#20242A; }
+  .nav-link::after { content:""; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:#D8232A; transition:width .3s ease; }
+  .nav-link:hover::after { width:100%; }
+
+  .wm { font-weight:800; line-height:.92; letter-spacing:.04em; }
+
+  /* Plovoucí WhatsApp pulzace */
+  @keyframes wapulse { 0%{box-shadow:0 0 0 0 rgba(37,211,102,.55);} 70%{box-shadow:0 0 0 16px rgba(37,211,102,0);} 100%{box-shadow:0 0 0 0 rgba(37,211,102,0);} }
+  .wa-pulse { animation: wapulse 2.4s infinite; }
+
+  input, select, textarea { font-family:inherit; }
+  .field { width:100%; border:1px solid #E4E6EA; border-radius:12px; padding:.85rem 1rem; background:#fff; color:#20242A; transition:border-color .2s ease, box-shadow .2s ease; }
+  .field:focus { outline:none; border-color:#D8232A; box-shadow:0 0 0 3px rgba(216,35,42,.15); }
+  .field-label { font-weight:600; font-size:.86rem; margin-bottom:.4rem; display:block; }
+  .field-err { border-color:#D8232A !important; }
+
+  /* Filtr nabídek */
+  .filter-btn { color:#20242A; }
+  .filter-btn[aria-selected="true"] { background:#D8232A; color:#fff; box-shadow:0 8px 18px -10px rgba(216,35,42,.7); }
+
+  /* Náhledy galerie v detailu */
+  .thumb { width:72px; height:54px; border-radius:8px; object-fit:cover; cursor:pointer; flex:0 0 auto; border:2px solid transparent; opacity:.7; transition:opacity .2s, border-color .2s; }
+  .thumb:hover { opacity:1; }
+  .thumb.active { opacity:1; border-color:#D8232A; }
+
+  .badge-prodej { background:#D8232A; color:#fff; }
+  .badge-pronajem { background:#20242A; color:#fff; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior:auto; }
+    .reveal { opacity:1 !important; transform:none !important; transition:none; }
+    .hero-img { transform:none !important; }
+    .wa-pulse { animation:none; }
+    .card:hover, .btn:hover { transform:none; }
+    .ref-track { scroll-behavior:auto; }
+  }
+</style>
+</head>
+
+<body class="antialiased">
+
+<!-- ============ NAVBAR ============ -->
+<header id="nav" class="glass-nav fixed top-0 inset-x-0 z-50">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8 h-[72px] flex items-center justify-between">
+    <a href="#hero" class="flex items-center gap-3" aria-label="Realitní makléřka — domů">
+      <svg viewBox="0 0 72 66" class="w-9 h-9 shrink-0" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Realitní makléřka">
+        <g fill="none" stroke="#D8232A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 34 L36 8 L66 34"/>
+          <path d="M14 31 L14 59 L58 59 L58 31"/>
+          <path d="M30 59 L30 44 L42 44 L42 59"/>
+        </g>
+      </svg>
+      <span class="wm text-[15px] tracking-[.06em]">
+        <span class="block text-ink">REALITNÍ</span>
+        <span class="block text-cred">MAKLÉŘKA</span>
+      </span>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-8" aria-label="Hlavní navigace">
+      <a href="#proc" class="nav-link">Proč já</a>
+      <a href="#sluzby" class="nav-link">Služby</a>
+      <a href="#nabidky" class="nav-link">Nabídky</a>
+      <a href="#proces" class="nav-link">Proces</a>
+      <a href="#reference" class="nav-link">Reference</a>
+      <a href="#oceneni" class="nav-link">Ocenění</a>
+      <a href="#kontakt" class="nav-link">Kontakt</a>
+      <a href="#oceneni" class="btn btn-primary text-sm py-2.5 px-5">Nezávazné ocenění</a>
+    </nav>
+
+    <button id="hamburger" class="lg:hidden p-2 -mr-2 text-ink" aria-label="Otevřít menu" aria-expanded="false" aria-controls="mobile-menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+
+  <!-- Mobilní menu -->
+  <div id="mobile-menu" class="lg:hidden hidden bg-white border-t border-line">
+    <nav class="px-5 py-5 flex flex-col gap-1" aria-label="Mobilní navigace">
+      <a href="#proc" class="py-3 border-b border-line font-semibold">Proč já</a>
+      <a href="#sluzby" class="py-3 border-b border-line font-semibold">Služby</a>
+      <a href="#nabidky" class="py-3 border-b border-line font-semibold">Nabídky</a>
+      <a href="#proces" class="py-3 border-b border-line font-semibold">Proces</a>
+      <a href="#reference" class="py-3 border-b border-line font-semibold">Reference</a>
+      <a href="#oceneni" class="py-3 border-b border-line font-semibold">Ocenění</a>
+      <a href="#kontakt" class="py-3 border-b border-line font-semibold">Kontakt</a>
+      <a href="#oceneni" class="btn btn-primary mt-4">Nezávazné ocenění</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section id="hero" class="relative pt-[72px]">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="grid lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-14 items-center min-h-[calc(100vh-72px)] py-14 lg:py-0">
+
+      <!-- Text -->
+      <div class="reveal">
+        <span class="eyebrow mb-7">Realitní makléřka [MESTO/REGION]</span>
+        <h1 class="font-light leading-[1.02] text-[2.7rem] sm:text-6xl lg:text-[4.4rem] tracking-tight">
+          Cesta k vašemu<br><span class="text-cred font-extrabold">novému domovu.</span>
+        </h1>
+        <p class="mt-7 text-lg lg:text-xl text-ink/75 font-light max-w-xl leading-relaxed">
+          Jeden makléř od prvního ocenění po předání klíčů. Jasná domluva, reálná čísla a péče v každém kroku — prodej i koupě s jistotou a bez tlaku.
+        </p>
+
+        <div class="mt-9 flex flex-col sm:flex-row gap-4">
+          <a href="#oceneni" class="btn btn-primary text-base">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+            Nezávazné ocenění
+          </a>
+          <a href="tel:[TELEFON]" class="btn btn-outline text-base">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1 .37 1.96.72 2.88a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.11-.45c.92.35 1.88.59 2.88.72A2 2 0 0 1 22 16.92Z"/></svg>
+            Zavolat
+          </a>
+        </div>
+
+        <ul class="mt-10 flex flex-wrap items-center gap-x-7 gap-y-3 text-sm font-medium text-ink/70">
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cred"></span>Ocenění zdarma</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cred"></span>Diskrétní jednání</li>
+          <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-cred"></span>Působnost [MESTO/REGION]</li>
+        </ul>
+      </div>
+
+      <!-- Fotka -->
+      <div class="reveal relative">
+        <div class="relative rounded-[20px] overflow-hidden bg-mist aspect-[4/5] lg:aspect-[5/6] shadow-[0_40px_80px_-40px_rgba(32,36,42,.5)]">
+          <img class="hero-img w-full h-[118%] object-cover" alt="Prosvětlený moderní interiér bytu s přirozeným světlem"
+            src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=1100&q=80"
+            onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#F4F5F7,#E4E6EA)'" />
+        </div>
+        <!-- Plovoucí kartička s claimem -->
+        <div class="hidden sm:block absolute -bottom-6 -left-6 bg-white border border-line rounded-2xl shadow-xl px-6 py-5 max-w-[260px]">
+          <div class="flex items-center gap-2 text-cred mb-1">
+            <svg width="18" height="18" viewBox="0 0 72 66" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 34 L36 8 L66 34"/><path d="M14 31 L14 59 L58 59 L58 31"/><path d="M30 59 L30 44 L42 44 L42 59"/></svg>
+            <span class="font-extrabold text-sm tracking-wide">S PÉČÍ I JISTOTOU</span>
+          </div>
+          <p class="text-sm text-ink/70 font-light leading-snug">Prodáme váš domov za reálnou cenu — a vy u toho budete v klidu.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROČ SE MNOU ============ -->
+<section id="proc" class="py-20 lg:py-28 bg-mist">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="reveal max-w-2xl mb-12 lg:mb-16">
+      <span class="eyebrow mb-5">Proč se mnou</span>
+      <h2 class="font-extrabold text-3xl lg:text-5xl leading-tight">Osobní přístup, který<br class="hidden sm:block"> u prodeje nemovitosti cítíte.</h2>
+      <p class="mt-5 text-lg text-ink/70 font-light">Nejste pro mě „lead". Jste člověk uprostřed životní změny — a já jsem tu od začátku do konce.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
+      <!-- karta -->
+      <div class="card p-7 reveal">
+        <div class="w-12 h-12 rounded-xl bg-cred/10 flex items-center justify-center mb-5 text-cred">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" stroke="#20242A"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h3 class="font-extrabold text-lg mb-2">Jeden makléř, od A do Z</h3>
+        <p class="text-ink/70 text-[15px] leading-relaxed font-light">Od první schůzky po předání klíčů jednáte se mnou. Žádné přehazování mezi kolegy ani ztracené informace.</p>
+      </div>
+
+      <div class="card p-7 reveal">
+        <div class="w-12 h-12 rounded-xl bg-cred/10 flex items-center justify-center mb-5 text-cred">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7" stroke="#20242A"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
+        </div>
+        <h3 class="font-extrabold text-lg mb-2">Bezplatné ocenění</h3>
+        <p class="text-ink/70 text-[15px] leading-relaxed font-light">Reálnou tržní cenu vám řeknu zdarma a nezávazně — podloženou prodeji z vaší lokality, ne přáním.</p>
+      </div>
+
+      <div class="card p-7 reveal">
+        <div class="w-12 h-12 rounded-xl bg-cred/10 flex items-center justify-center mb-5 text-cred">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" stroke="#20242A"/><circle cx="12" cy="13" r="4"/></svg>
+        </div>
+        <h3 class="font-extrabold text-lg mb-2">Focení a homestaging</h3>
+        <p class="text-ink/70 text-[15px] leading-relaxed font-light">Profesionální fotografie, video a homestaging, díky kterým nemovitost zaujme dřív, než ji někdo navštíví.</p>
+      </div>
+
+      <div class="card p-7 reveal">
+        <div class="w-12 h-12 rounded-xl bg-cred/10 flex items-center justify-center mb-5 text-cred">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="#20242A"/><path d="M14 2v6h6" stroke="#20242A"/><circle cx="12" cy="15" r="2.6"/><path d="M12 17.6V20"/></svg>
+        </div>
+        <h3 class="font-extrabold text-lg mb-2">Právní servis i hypotéka</h3>
+        <p class="text-ink/70 text-[15px] leading-relaxed font-light">Smlouvy u advokáta a pomoc s financováním. O papíry se nestaráte vy — staráte se jen o stěhování.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SLUŽBY ============ -->
+<section id="sluzby" class="py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="reveal max-w-2xl mb-12 lg:mb-16">
+      <span class="eyebrow mb-5">Služby</span>
+      <h2 class="font-extrabold text-3xl lg:text-5xl leading-tight">Vše kolem nemovitosti<br class="hidden sm:block"> pod jednou střechou.</h2>
+      <p class="mt-5 text-lg text-ink/70 font-light">Co potřebujete vyřešit, vyřeším s vámi. Postup i provizi řeknu předem, písemně.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+      <!-- Prodej -->
+      <article class="card p-7 reveal">
+        <div class="text-cred mb-4"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18" stroke="#20242A"/><path d="M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg></div>
+        <h3 class="font-extrabold text-xl mb-2">Prodej nemovitosti</h3>
+        <p class="text-ink/70 text-[15px] leading-relaxed font-light">Kompletní servis od strategie po podpis. <span class="text-ink font-medium">Vy získáte nejlepší reálnou cenu, já se postarám o celý průběh.</span></p>
+      </article>
+
+      <!-- Pronájem -->
+      <article class="card p-7 reveal">
+        <div class="text-cred mb-4"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m21 8-9-5-9 5v11a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1z" stroke="#20242A"/><path d="M9 22V12h6v10"/></svg></div>
+        <h3 class="font-extrabold text-xl mb-2">Pronájem</h3>
+        <p class="text-ink/70 text-[15px] leading-relaxed font-light">Najdu prověřené nájemníky a ohlídám smlouvu i předání. <span class="text-ink font-medium">Vy máte klid a jistý příjem.</span></p>
+      </article>
+
+      <!-- Výkup -->
+      <article class="card p-7 reveal">
+        <div class="text-cred mb-4"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20" stroke="#20242A"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <h3 class="font-extrabold text-xl mb-2">Výkup a rychlý prodej</h3>
+        <p class="text-ink/70 text-[15px] leading-relaxed font-light">Potřebujete peníze rychle? Nabídnu řešení s výkupem. <span class="text-ink font-medium">Vy víte termín i částku dopředu.</span></p>
+      </article>
+
+      <!-- Ocenění -->
+      <article class="card p-7 reveal">
+        <div class="text-cred mb-4"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7" stroke="#20242A"/><path d="m21 21-4.3-4.3"/><path d="M9.5 11h3M11 9.5v3"/></svg></div>
+        <h3 class="font-extrabold text-xl mb-2">Ocenění zdarma</h3>
+        <p class="text-ink/70 text-[15px] leading-relaxed font-light">Tržní cena podložená skutečnými prodeji ve vašem okolí. <span class="text-ink font-medium">Zdarma, nezávazně, písemně.</span></p>
+      </article>
+
+      <!-- Homestaging -->
+      <article class="card p-7 reveal">
+        <div class="text-cred mb-4"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" stroke="#20242A"/><circle cx="12" cy="13" r="4"/></svg></div>
+        <h3 class="font-extrabold text-xl mb-2">Homestaging, foto a video</h3>
+        <p class="text-ink/70 text-[15px] leading-relaxed font-light">Připravím nemovitost tak, aby prodávala sama. <span class="text-ink font-medium">Vy získáte víc zájemců a lepší nabídky.</span></p>
+      </article>
+
+      <!-- Právní + hypoteční -->
+      <article class="card p-7 reveal">
+        <div class="text-cred mb-4"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" stroke="#20242A"/><path d="M14 2v6h6" stroke="#20242A"/><path d="m9 15 2 2 4-4"/></svg></div>
+        <h3 class="font-extrabold text-xl mb-2">Právní a hypoteční servis</h3>
+        <p class="text-ink/70 text-[15px] leading-relaxed font-light">Smlouvy u advokáta, úschova a financování na jednom místě. <span class="text-ink font-medium">Vy se vyhnete chybám i stresu.</span></p>
+      </article>
+
+      <!-- Vyhledání pro kupující -->
+      <article class="card p-7 reveal lg:col-span-1 sm:col-span-2">
+        <div class="text-cred mb-4"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" stroke="#20242A"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <h3 class="font-extrabold text-xl mb-2">Hledání pro kupující</h3>
+        <p class="text-ink/70 text-[15px] leading-relaxed font-light">Najdu nemovitost podle vašich představ — i tu, která ještě není v inzerci. <span class="text-ink font-medium">Vy ušetříte čas i nervy.</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AKTUÁLNÍ NABÍDKY ============ -->
+<section id="nabidky" class="py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="reveal flex flex-wrap items-end justify-between gap-6 mb-10 lg:mb-14">
+      <div class="max-w-2xl">
+        <span class="eyebrow mb-5">Aktuální nabídky</span>
+        <h2 class="font-extrabold text-3xl lg:text-5xl leading-tight">Nemovitosti, které právě nabízím.</h2>
+        <p class="mt-5 text-lg text-ink/70 font-light">Výběr z aktuální nabídky k prodeji i pronájmu. Klikněte na nabídku pro detail a fotky.</p>
+      </div>
+
+      <!-- Filtr -->
+      <div class="inline-flex bg-mist border border-line rounded-full p-1" role="tablist" aria-label="Filtr nabídek">
+        <button class="filter-btn px-5 py-2 rounded-full text-sm font-bold transition" data-filter="vse" aria-selected="true">Vše</button>
+        <button class="filter-btn px-5 py-2 rounded-full text-sm font-bold transition" data-filter="prodej" aria-selected="false">Prodej</button>
+        <button class="filter-btn px-5 py-2 rounded-full text-sm font-bold transition" data-filter="pronajem" aria-selected="false">Pronájem</button>
+      </div>
+    </div>
+
+    <div id="nabidky-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"></div>
+
+    <p class="mt-10 text-center text-ink/60 font-light reveal">Hledáte něco konkrétního, co tu nevidíte? <a href="#oceneni" class="text-cred font-semibold hover:text-creddark">Napište mi</a> — najdu i nemovitost, která ještě není v inzerci.</p>
+  </div>
+</section>
+
+<!-- Detail nabídky (modal) -->
+<div id="nabidka-modal" class="fixed inset-0 z-[60] hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div id="modal-backdrop" class="absolute inset-0 bg-ink/70 backdrop-blur-sm"></div>
+  <div class="absolute inset-0 overflow-y-auto p-4 sm:p-6 flex items-start sm:items-center justify-center">
+    <div class="relative bg-white rounded-2xl w-full max-w-4xl shadow-2xl my-auto overflow-hidden">
+      <button id="modal-close" class="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 border border-line flex items-center justify-center hover:text-cred hover:border-cred transition" aria-label="Zavřít detail">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+
+      <div class="grid lg:grid-cols-2">
+        <!-- Galerie -->
+        <div class="bg-mist">
+          <div class="relative aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[420px]">
+            <img id="modal-main" class="w-full h-full object-cover lg:absolute lg:inset-0" alt="" />
+            <span id="modal-badge" class="absolute top-4 left-4 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full"></span>
+          </div>
+          <div id="modal-thumbs" class="flex gap-2 p-3 overflow-x-auto"></div>
+        </div>
+
+        <!-- Info -->
+        <div class="p-6 lg:p-8 lg:max-h-[80vh] lg:overflow-y-auto">
+          <span id="modal-type" class="eyebrow mb-3 text-sm"></span>
+          <h3 id="modal-title" class="font-extrabold text-2xl leading-tight"></h3>
+          <p id="modal-loc" class="text-ink/60 mt-1.5 flex items-center gap-1.5">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span></span>
+          </p>
+
+          <div id="modal-price" class="mt-5 text-3xl font-extrabold text-cred"></div>
+
+          <ul id="modal-params" class="grid grid-cols-2 gap-x-4 gap-y-3 mt-6 pt-6 border-t border-line"></ul>
+
+          <p id="modal-desc" class="mt-6 text-ink/75 font-light leading-relaxed"></p>
+
+          <div class="mt-7 flex flex-col sm:flex-row gap-3">
+            <a id="modal-interest" href="#oceneni" class="btn btn-primary flex-1">Mám zájem</a>
+            <a href="tel:[TELEFON]" class="btn btn-outline flex-1">Zavolat</a>
+          </div>
+          <p class="mt-4 text-xs text-ink/45">Uvedené ceny a parametry jsou ilustrativní. Aktuální dostupnost ráda potvrdím.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ PROCES ============ -->
+<section id="proces" class="py-20 lg:py-28 bg-mist">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="reveal max-w-2xl mb-12 lg:mb-16">
+      <span class="eyebrow mb-5">Proces</span>
+      <h2 class="font-extrabold text-3xl lg:text-5xl leading-tight">Jasná cesta v šesti krocích.</h2>
+      <p class="mt-5 text-lg text-ink/70 font-light">Víte přesně, co se kdy děje a proč. Tempo určujete vy — až budete chtít, prodej rozjedu hned.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+      <div class="card p-7 reveal">
+        <div class="flex items-baseline gap-3 mb-3"><span class="step-num">01</span><span class="h-px flex-1 bg-line"></span></div>
+        <h3 class="font-extrabold text-lg mb-1.5">Ocenění a strategie</h3>
+        <p class="text-ink/70 text-[15px] leading-relaxed font-light">Stanovíme reálnou cenu a plán prodeje na míru vaší nemovitosti.</p>
+      </div>
+      <div class="card p-7 reveal">
+        <div class="flex items-baseline gap-3 mb-3"><span class="step-num">02</span><span class="h-px flex-1 bg-line"></span></div>
+        <h3 class="font-extrabold text-lg mb-1.5">Příprava a focení</h3>
+        <p class="text-ink/70 text-[15px] leading-relaxed font-light">Homestaging, profesionální fotografie a video, které prodávají.</p>
+      </div>
+      <div class="card p-7 reveal">
+        <div class="flex items-baseline gap-3 mb-3"><span class="step-num">03</span><span class="h-px flex-1 bg-line"></span></div>
+        <h3 class="font-extrabold text-lg mb-1.5">Cílený marketing</h3>
+        <p class="text-ink/70 text-[15px] leading-relaxed font-light">Nemovitost uvidí ti správní zájemci — inzerce, sítě i moje databáze.</p>
+      </div>
+      <div class="card p-7 reveal">
+        <div class="flex items-baseline gap-3 mb-3"><span class="step-num">04</span><span class="h-px flex-1 bg-line"></span></div>
+        <h3 class="font-extrabold text-lg mb-1.5">Prohlídky</h3>
+        <p class="text-ink/70 text-[15px] leading-relaxed font-light">Vše zařídím a odprezentuji za vás. Vám hlásím zpětnou vazbu.</p>
+      </div>
+      <div class="card p-7 reveal">
+        <div class="flex items-baseline gap-3 mb-3"><span class="step-num">05</span><span class="h-px flex-1 bg-line"></span></div>
+        <h3 class="font-extrabold text-lg mb-1.5">Rezervace</h3>
+        <p class="text-ink/70 text-[15px] leading-relaxed font-light">Vyjednám nejlepší podmínky a sepíšeme rezervační smlouvu.</p>
+      </div>
+      <div class="card p-7 reveal">
+        <div class="flex items-baseline gap-3 mb-3"><span class="step-num">06</span><span class="h-px flex-1 bg-line"></span></div>
+        <h3 class="font-extrabold text-lg mb-1.5">Smlouvy a předání klíčů</h3>
+        <p class="text-ink/70 text-[15px] leading-relaxed font-light">Kupní smlouva u advokáta, úschova a hladké předání. Hotovo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ČÍSLA ============ -->
+<section class="py-20 lg:py-28 bg-ink text-white">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="reveal text-center max-w-2xl mx-auto mb-14">
+      <span class="eyebrow light center mb-5">V číslech</span>
+      <h2 class="font-light text-3xl lg:text-5xl leading-tight">Výsledky, ne sliby.</h2>
+    </div>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 text-center">
+      <div class="reveal">
+        <div class="font-extrabold text-5xl lg:text-6xl text-white counter" data-target="150" data-suffix="+">0</div>
+        <p class="mt-3 text-white/60 font-light text-sm lg:text-base">prodaných nemovitostí</p>
+      </div>
+      <div class="reveal">
+        <div class="font-extrabold text-5xl lg:text-6xl text-cred counter" data-target="21" data-prefix="Ø ">0</div>
+        <p class="mt-3 text-white/60 font-light text-sm lg:text-base">dní do rezervace</p>
+      </div>
+      <div class="reveal">
+        <div class="font-extrabold text-5xl lg:text-6xl text-white counter" data-target="100" data-suffix=" %">0</div>
+        <p class="mt-3 text-white/60 font-light text-sm lg:text-base">smluv u advokáta</p>
+      </div>
+      <div class="reveal">
+        <div class="font-extrabold text-5xl lg:text-6xl text-cred counter" data-target="98" data-suffix=" %">0</div>
+        <p class="mt-3 text-white/60 font-light text-sm lg:text-base">spokojených klientů</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REFERENCE ============ -->
+<section id="reference" class="py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="reveal flex flex-wrap items-end justify-between gap-6 mb-12 lg:mb-16">
+      <div class="max-w-2xl">
+        <span class="eyebrow mb-5">Reference</span>
+        <h2 class="font-extrabold text-3xl lg:text-5xl leading-tight">Co říkají lidé, kteří už klíče předali.</h2>
+      </div>
+      <div class="flex gap-3">
+        <button id="ref-prev" class="w-12 h-12 rounded-full border border-line flex items-center justify-center hover:border-cred hover:text-cred transition" aria-label="Předchozí reference">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button id="ref-next" class="w-12 h-12 rounded-full border border-line flex items-center justify-center hover:border-cred hover:text-cred transition" aria-label="Další reference">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="ref-track" class="ref-track reveal">
+      <!-- 1 -->
+      <figure class="ref-card card p-8 flex flex-col">
+        <div class="flex gap-1 text-cred mb-4" aria-label="5 z 5 hvězd">★★★★★</div>
+        <blockquote class="text-ink/80 text-[17px] leading-relaxed font-light flex-1">„Největší rozdíl byl klid. Žádný tlak, žádné fráze — jen jasná domluva a pravidelné info. Byt se prodal rychleji, než jsem čekala."</blockquote>
+        <figcaption class="mt-6 pt-5 border-t border-line">
+          <span class="font-extrabold block">Petra Nováková</span>
+          <span class="text-ink/55 text-sm">Brno</span>
+        </figcaption>
+      </figure>
+      <!-- 2 -->
+      <figure class="ref-card card p-8 flex flex-col">
+        <div class="flex gap-1 text-cred mb-4" aria-label="5 z 5 hvězd">★★★★★</div>
+        <blockquote class="text-ink/80 text-[17px] leading-relaxed font-light flex-1">„Provizi i postup jsem měl na papíře hned na první schůzce. Konečně někdo, kdo mluví na rovinu a ceny dokládá reálnými prodeji."</blockquote>
+        <figcaption class="mt-6 pt-5 border-t border-line">
+          <span class="font-extrabold block">Martin Dvořák</span>
+          <span class="text-ink/55 text-sm">Olomouc</span>
+        </figcaption>
+      </figure>
+      <!-- 3 -->
+      <figure class="ref-card card p-8 flex flex-col">
+        <div class="flex gap-1 text-cred mb-4" aria-label="5 z 5 hvězd">★★★★★</div>
+        <blockquote class="text-ink/80 text-[17px] leading-relaxed font-light flex-1">„Fotky a video vypadaly jako z katalogu. Inzerát měl během pár dní tolik dotazů, že jsme vybírali z více zájemců."</blockquote>
+        <figcaption class="mt-6 pt-5 border-t border-line">
+          <span class="font-extrabold block">Lucie Procházková</span>
+          <span class="text-ink/55 text-sm">Praha</span>
+        </figcaption>
+      </figure>
+      <!-- 4 -->
+      <figure class="ref-card card p-8 flex flex-col">
+        <div class="flex gap-1 text-cred mb-4" aria-label="5 z 5 hvězd">★★★★★</div>
+        <blockquote class="text-ink/80 text-[17px] leading-relaxed font-light flex-1">„S hypotékou i smlouvami nám pomohla od začátku do konce. Vše proběhlo u advokáta a my se o papíry vůbec nestarali."</blockquote>
+        <figcaption class="mt-6 pt-5 border-t border-line">
+          <span class="font-extrabold block">Jan a Tereza Markovi</span>
+          <span class="text-ink/55 text-sm">Hradec Králové</span>
+        </figcaption>
+      </figure>
+      <!-- 5 -->
+      <figure class="ref-card card p-8 flex flex-col">
+        <div class="flex gap-1 text-cred mb-4" aria-label="5 z 5 hvězd">★★★★★</div>
+        <blockquote class="text-ink/80 text-[17px] leading-relaxed font-light flex-1">„Oceňuji hlavně diskrétnost. Prodej řešila citlivě, v klidu a po dohodě — přesně tempem, které nám vyhovovalo."</blockquote>
+        <figcaption class="mt-6 pt-5 border-t border-line">
+          <span class="font-extrabold block">Eva Horáková</span>
+          <span class="text-ink/55 text-sm">Plzeň</span>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OCENĚNÍ + KONTAKT ============ -->
+<section id="oceneni" class="py-20 lg:py-28 bg-mist">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="reveal max-w-2xl mb-12 lg:mb-16">
+      <span class="eyebrow mb-5">Ocenění a kontakt</span>
+      <h2 class="font-extrabold text-3xl lg:text-5xl leading-tight">Nezávazné ocenění zdarma.</h2>
+      <p class="mt-5 text-lg text-ink/70 font-light">Vyplňte pár údajů a já vám připravím reálný odhad ceny podložený prodeji ve vaší lokalitě. Žádná zavádějící „cena z webu" — ozvu se osobně.</p>
+    </div>
+
+    <div id="kontakt" class="grid lg:grid-cols-[1.3fr_1fr] gap-6 lg:gap-8 items-start">
+      <!-- Formulář -->
+      <div class="card p-7 lg:p-9 reveal">
+        <form id="oceneni-form" novalidate>
+          <div class="grid sm:grid-cols-2 gap-5">
+            <div>
+              <label class="field-label" for="typ">Typ nemovitosti *</label>
+              <select id="typ" name="typ" class="field" required>
+                <option value="">Vyberte…</option>
+                <option>Byt</option>
+                <option>Dům</option>
+                <option>Pozemek</option>
+                <option>Komerční prostor</option>
+              </select>
+            </div>
+            <div>
+              <label class="field-label" for="lokalita">Lokalita *</label>
+              <input id="lokalita" name="lokalita" type="text" class="field" placeholder="Město, část" required />
+            </div>
+            <div>
+              <label class="field-label" for="plocha">Plocha (m²) *</label>
+              <input id="plocha" name="plocha" type="number" min="1" class="field" placeholder="Např. 68" required />
+            </div>
+            <div>
+              <label class="field-label" for="dispozice">Dispozice <span class="text-ink/40 font-normal">(volitelné)</span></label>
+              <input id="dispozice" name="dispozice" type="text" class="field" placeholder="Např. 2+kk" />
+            </div>
+            <div>
+              <label class="field-label" for="jmeno">Jméno *</label>
+              <input id="jmeno" name="jmeno" type="text" class="field" placeholder="Jméno a příjmení" required />
+            </div>
+            <div>
+              <label class="field-label" for="telefon">Telefon *</label>
+              <input id="telefon" name="telefon" type="tel" class="field" placeholder="+420 …" required />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="field-label" for="email">E-mail *</label>
+              <input id="email" name="email" type="email" class="field" placeholder="vas@email.cz" required />
+            </div>
+            <div class="sm:col-span-2">
+              <label class="field-label" for="zprava">Zpráva <span class="text-ink/40 font-normal">(volitelné)</span></label>
+              <textarea id="zprava" name="zprava" rows="3" class="field" placeholder="Cokoli, co bych měla vědět…"></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-full sm:w-auto mt-6 text-base">Odeslat žádost o ocenění</button>
+
+          <p id="form-msg" class="hidden mt-4 text-cred font-semibold" role="alert"></p>
+          <div id="form-ok" class="hidden mt-5">
+            <div class="flex items-start gap-3 bg-cred/10 border border-cred/25 rounded-xl p-4">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#D8232A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 mt-0.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m9 11 3 3L22 4"/></svg>
+              <p class="text-ink text-[15px]">Děkuji, žádost je připravená k odeslání ve vašem e-mailovém klientovi. <strong>Ozvu se vám do 24 hodin.</strong></p>
+            </div>
+          </div>
+
+          <p class="mt-5 text-xs text-ink/50 leading-relaxed">Ocenění je zdarma a nezávazné. Odesláním souhlasíte se zpracováním údajů pro účely kontaktu dle <a href="#footer" class="underline">zásad GDPR</a>.</p>
+        </form>
+      </div>
+
+      <!-- Kontaktní karta -->
+      <div class="card p-7 lg:p-9 reveal">
+        <div class="flex items-center gap-3 mb-6">
+          <svg viewBox="0 0 72 66" class="w-10 h-10" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke="#D8232A" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 34 L36 8 L66 34"/><path d="M14 31 L14 59 L58 59 L58 31"/><path d="M30 59 L30 44 L42 44 L42 59"/></g></svg>
+          <div class="wm text-base"><span class="block text-ink">REALITNÍ</span><span class="block text-cred">MAKLÉŘKA</span></div>
+        </div>
+
+        <p class="text-ink/70 font-light leading-relaxed mb-7">Jmenuji se <strong class="text-ink font-semibold">[JMENO_MAKLERKY]</strong> a působím v lokalitě <strong class="text-ink font-semibold">[MESTO/REGION]</strong>. Napište nebo zavolejte — domluvíme se na termínu, který vám vyhovuje.</p>
+
+        <ul class="space-y-4">
+          <li>
+            <a href="tel:[TELEFON]" class="flex items-center gap-4 group">
+              <span class="w-11 h-11 rounded-xl bg-cred/10 text-cred flex items-center justify-center shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1 .37 1.96.72 2.88a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.11-.45c.92.35 1.88.59 2.88.72A2 2 0 0 1 22 16.92Z"/></svg></span>
+              <span><span class="block text-xs text-ink/50 uppercase tracking-wider font-bold">Telefon</span><span class="font-semibold group-hover:text-cred transition">[TELEFON]</span></span>
+            </a>
+          </li>
+          <li>
+            <a href="mailto:[EMAIL]" class="flex items-center gap-4 group">
+              <span class="w-11 h-11 rounded-xl bg-cred/10 text-cred flex items-center justify-center shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></span>
+              <span><span class="block text-xs text-ink/50 uppercase tracking-wider font-bold">E-mail</span><span class="font-semibold group-hover:text-cred transition">[EMAIL]</span></span>
+            </a>
+          </li>
+          <li>
+            <div class="flex items-center gap-4">
+              <span class="w-11 h-11 rounded-xl bg-cred/10 text-cred flex items-center justify-center shrink-0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+              <span><span class="block text-xs text-ink/50 uppercase tracking-wider font-bold">Oblast působnosti</span><span class="font-semibold">[MESTO/REGION]</span></span>
+            </div>
+          </li>
+        </ul>
+
+        <div class="mt-7 pt-6 border-t border-line flex items-center gap-3 text-sm text-ink/70">
+          <span class="w-2.5 h-2.5 rounded-full bg-green-500 shrink-0"></span>
+          <span><strong class="text-ink">Ozvu se do 24 hodin.</strong> Obvykle mnohem dřív.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ PATIČKA ============ -->
+<footer id="footer" class="bg-ink text-white pt-16 pb-8">
+  <div class="max-w-7xl mx-auto px-5 lg:px-8">
+    <div class="grid md:grid-cols-[1.4fr_1fr_1fr] gap-10 lg:gap-16 pb-12 border-b border-white/10">
+      <div>
+        <div class="flex items-center gap-3 mb-5">
+          <svg viewBox="0 0 72 66" class="w-10 h-10" xmlns="http://www.w3.org/2000/svg"><g fill="none" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 34 L36 8 L66 34" stroke="#D8232A"/><path d="M14 31 L14 59 L58 59 L58 31" stroke="#FFFFFF"/><path d="M30 59 L30 44 L42 44 L42 59" stroke="#FFFFFF"/></g></svg>
+          <div class="wm text-lg"><span class="block">REALITNÍ</span><span class="block text-cred">MAKLÉŘKA</span></div>
+        </div>
+        <p class="text-white/60 font-light leading-relaxed max-w-sm">Cesta k vašemu novému domovu. Prodáme váš domov s péčí i jistotou — jeden makléř od ocenění po předání klíčů.</p>
+      </div>
+
+      <div>
+        <h3 class="font-extrabold text-sm uppercase tracking-wider mb-4">Navigace</h3>
+        <ul class="space-y-2.5 text-white/65">
+          <li><a href="#proc" class="hover:text-cred transition">Proč já</a></li>
+          <li><a href="#sluzby" class="hover:text-cred transition">Služby</a></li>
+          <li><a href="#nabidky" class="hover:text-cred transition">Aktuální nabídky</a></li>
+          <li><a href="#proces" class="hover:text-cred transition">Proces</a></li>
+          <li><a href="#reference" class="hover:text-cred transition">Reference</a></li>
+          <li><a href="#oceneni" class="hover:text-cred transition">Ocenění</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="font-extrabold text-sm uppercase tracking-wider mb-4">Kontakt</h3>
+        <ul class="space-y-2.5 text-white/65">
+          <li><a href="tel:[TELEFON]" class="hover:text-cred transition">[TELEFON]</a></li>
+          <li><a href="mailto:[EMAIL]" class="hover:text-cred transition">[EMAIL]</a></li>
+          <li>[MESTO/REGION]</li>
+        </ul>
+        <div class="flex gap-3 mt-5">
+          <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-cred hover:text-cred transition"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Facebook" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-cred hover:text-cred transition"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://wa.me/[WHATSAPP_CISLO_BEZ_PLUS]" aria-label="WhatsApp" class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:border-cred hover:text-cred transition"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.4.4 0 0 0 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6a2.5 2.5 0 0 0 1.6-1.2 2 2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="pt-7 flex flex-col sm:flex-row justify-between gap-3 text-sm text-white/45">
+      <p>© <span id="year"></span> Realitní makléřka [JMENO_MAKLERKY]. Všechna práva vyhrazena.</p>
+      <p>Zpracování osobních údajů probíhá v souladu s GDPR. Údaje slouží výhradně ke kontaktu.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ PLOVOUCÍ PRVKY ============ -->
+<a href="https://wa.me/[WHATSAPP_CISLO_BEZ_PLUS]?text=Dobr%C3%BD%20den%2C%20m%C3%A1m%20z%C3%A1jem%20o%20ocen%C4%9Bn%C3%AD%20nemovitosti"
+   class="wa-pulse fixed bottom-5 right-5 z-50 w-14 h-14 rounded-full bg-[#25D366] flex items-center justify-center shadow-lg" aria-label="Napsat na WhatsApp" target="_blank" rel="noopener">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.8 4.9-1.3A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-5.9c-.2-.1-1.4-.7-1.6-.8s-.4-.1-.5.1-.6.8-.8 1-.3.2-.5.1a6.5 6.5 0 0 1-3.2-2.8c-.2-.4.2-.4.6-1.2a.4.4 0 0 0 0-.4l-.7-1.7c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11 11 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6a2.5 2.5 0 0 0 1.6-1.2 2 2 0 0 0 .2-1.2c-.1-.1-.3-.2-.5-.3Z"/></svg>
+</a>
+
+<!-- Mobilní tlačítko Zavolat -->
+<a href="tel:[TELEFON]" class="sm:hidden fixed bottom-5 left-5 z-50 btn btn-primary py-3 px-5 shadow-lg" aria-label="Zavolat">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1 .37 1.96.72 2.88a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.11-.45c.92.35 1.88.59 2.88.72A2 2 0 0 1 22 16.92Z"/></svg>
+  Zavolat
+</a>
+
+<script>
+(function () {
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Rok v patičce
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Navbar shadow on scroll + parallax
+  var nav = document.getElementById('nav');
+  var heroImg = document.querySelector('.hero-img');
+  function onScroll() {
+    if (window.scrollY > 12) nav.classList.add('scrolled'); else nav.classList.remove('scrolled');
+    if (heroImg && !reduced) {
+      var off = Math.min(window.scrollY * 0.12, 60);
+      heroImg.style.transform = 'translateY(' + off + 'px)';
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Hamburger
+  var burger = document.getElementById('hamburger');
+  var menu = document.getElementById('mobile-menu');
+  burger.addEventListener('click', function () {
+    var open = menu.classList.toggle('hidden') === false;
+    burger.setAttribute('aria-expanded', String(open));
+  });
+  menu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () { menu.classList.add('hidden'); burger.setAttribute('aria-expanded', 'false'); });
+  });
+
+  // Scroll reveal
+  var reveals = document.querySelectorAll('.reveal');
+  if (reduced) {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(function (el) { io.observe(el); });
+  }
+
+  // Počítadla
+  var counters = document.querySelectorAll('.counter');
+  function animateCounter(el) {
+    var target = parseInt(el.dataset.target, 10);
+    var prefix = el.dataset.prefix || '';
+    var suffix = el.dataset.suffix || '';
+    if (reduced) { el.textContent = prefix + target + suffix; return; }
+    var dur = 1500, start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix + Math.round(eased * target) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var cio = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { animateCounter(e.target); cio.unobserve(e.target); }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(function (el) { cio.observe(el); });
+
+  // Reference slider
+  var track = document.getElementById('ref-track');
+  function cardStep() {
+    var card = track.querySelector('.ref-card');
+    if (!card) return 320;
+    var gap = parseFloat(getComputedStyle(track).gap) || 24;
+    return card.getBoundingClientRect().width + gap;
+  }
+  document.getElementById('ref-next').addEventListener('click', function () { track.scrollBy({ left: cardStep(), behavior: reduced ? 'auto' : 'smooth' }); });
+  document.getElementById('ref-prev').addEventListener('click', function () { track.scrollBy({ left: -cardStep(), behavior: reduced ? 'auto' : 'smooth' }); });
+
+  // Formulář – validace + mailto
+  var form = document.getElementById('oceneni-form');
+  var msg = document.getElementById('form-msg');
+  var ok = document.getElementById('form-ok');
+  var EMAIL = '[EMAIL]';
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    msg.classList.add('hidden');
+    ok.classList.add('hidden');
+
+    var required = ['typ', 'lokalita', 'plocha', 'jmeno', 'telefon', 'email'];
+    var firstBad = null;
+    required.forEach(function (id) {
+      var f = document.getElementById(id);
+      f.classList.remove('field-err');
+      if (!f.value.trim()) { f.classList.add('field-err'); if (!firstBad) firstBad = f; }
+    });
+
+    var email = document.getElementById('email');
+    var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
+    if (email.value.trim() && !emailOk) { email.classList.add('field-err'); if (!firstBad) firstBad = email; }
+
+    if (firstBad) {
+      msg.textContent = !emailOk && email.value.trim() ? 'Zkontrolujte prosím e-mailovou adresu.' : 'Vyplňte prosím povinná pole označená *.';
+      msg.classList.remove('hidden');
+      firstBad.focus();
+      return;
+    }
+
+    var d = function (id) { return (document.getElementById(id).value || '').trim(); };
+    var subject = 'Žádost o nezávazné ocenění – ' + d('typ') + ', ' + d('lokalita');
+    var body =
+      'Typ nemovitosti: ' + d('typ') + '\n' +
+      'Lokalita: ' + d('lokalita') + '\n' +
+      'Plocha (m2): ' + d('plocha') + '\n' +
+      'Dispozice: ' + (d('dispozice') || '—') + '\n' +
+      'Jméno: ' + d('jmeno') + '\n' +
+      'Telefon: ' + d('telefon') + '\n' +
+      'E-mail: ' + d('email') + '\n\n' +
+      'Zpráva:\n' + (d('zprava') || '—');
+
+    window.location.href = 'mailto:' + EMAIL + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    ok.classList.remove('hidden');
+    form.reset();
+  });
+
+  /* ===== Aktuální nabídky ===== */
+  var IMG = function (id) { return 'https://images.unsplash.com/photo-' + id + '?auto=format&fit=crop&w=900&q=80'; };
+  var FALLBACK = "this.onerror=null;this.style.opacity=0;this.parentElement.style.background='linear-gradient(135deg,#F4F5F7,#E4E6EA)';";
+
+  var listings = [
+    {
+      id: 'p1', type: 'prodej', status: 'Novinka',
+      title: 'Slunný byt 3+kk po rekonstrukci', loc: 'Praha 5 — Smíchov',
+      price: '8 990 000 Kč',
+      params: [['Dispozice','3+kk'],['Plocha','78 m²'],['Patro','4. z 6'],['Stav','Po rekonstrukci'],['Energ. třída','B'],['K nastěhování','Ihned']],
+      desc: 'Světlý byt s rohovou orientací a výhledem do zeleně. Kompletně zrekonstruováno v roce 2023 — nové rozvody, podlahy i kuchyně na míru. K bytu náleží sklep a možnost pronájmu parkovacího stání v domě.',
+      images: ['1502672260266-1c1ef2d93688','1556909114-f6e7ad7d3136','1540518614846-7eded433c457','1584622650111-993a426fbf0a']
+    },
+    {
+      id: 'p2', type: 'prodej', status: null,
+      title: 'Rodinný dům 5+1 se zahradou', loc: 'Brno-venkov — Kuřim',
+      price: '11 500 000 Kč',
+      params: [['Dispozice','5+1'],['Užitná plocha','142 m²'],['Pozemek','620 m²'],['Garáž','Ano'],['Stav','Velmi dobrý'],['Energ. třída','C']],
+      desc: 'Prostorný dům pro rodinu v klidné ulici na okraji města. Vzrostlá zahrada, krytá terasa a samostatná garáž. Přízemí s velkým obývacím prostorem propojeným s kuchyní, v patře tři ložnice a koupelna.',
+      images: ['1568605114967-8130f3a36994','1493809842364-78817add7ffb','1556912173-3bb406ef7e77','1505691938895-1758d7feb511']
+    },
+    {
+      id: 'p3', type: 'prodej', status: 'Rezervováno',
+      title: 'Útulný byt 2+kk v centru', loc: 'Olomouc — centrum',
+      price: '4 290 000 Kč',
+      params: [['Dispozice','2+kk'],['Plocha','56 m²'],['Patro','2. z 4'],['Balkon','Ano'],['Stav','Dobrý'],['Energ. třída','D']],
+      desc: 'Byt v cihlovém domě pár kroků od náměstí. Funkční dispozice, balkon do dvora a nízké náklady na bydlení. Ideální jako první vlastní bydlení nebo investice na pronájem.',
+      images: ['1586023492125-27b2c045efd7','1505693416388-ac5ce068fe85','1556909114-f6e7ad7d3136']
+    },
+    {
+      id: 'r1', type: 'pronajem', status: 'Novinka',
+      title: 'Zařízený byt 1+kk', loc: 'Praha 2 — Vinohrady',
+      price: '16 500 Kč', priceNote: '/ měsíc',
+      params: [['Dispozice','1+kk'],['Plocha','38 m²'],['Patro','3. z 5'],['Zařízení','Plně zařízeno'],['Poplatky','+ 3 500 Kč'],['Dostupné od','Ihned']],
+      desc: 'Kompletně zařízený byt v oblíbené lokalitě s vynikající dostupností. Vhodný pro jednotlivce nebo pár. Tichý dvorní trakt, výtah v domě. Kauce ve výši dvou nájmů.',
+      images: ['1505691938895-1758d7feb511','1556912173-3bb406ef7e77','1540518614846-7eded433c457']
+    },
+    {
+      id: 'r2', type: 'pronajem', status: null,
+      title: 'Prostorný byt 2+1 s balkonem', loc: 'Brno-střed',
+      price: '21 000 Kč', priceNote: '/ měsíc',
+      params: [['Dispozice','2+1'],['Plocha','64 m²'],['Patro','1. z 3'],['Zařízení','Částečně'],['Balkon','Ano'],['Dostupné od','Příští měsíc']],
+      desc: 'Světlý byt v udržovaném domě nedaleko centra. Oddělená kuchyně, prostorný obývací pokoj s balkonem a samostatná ložnice. Klidná lokalita s dobrou občanskou vybaveností.',
+      images: ['1493809842364-78817add7ffb','1502672260266-1c1ef2d93688','1556909114-f6e7ad7d3136']
+    },
+    {
+      id: 'r3', type: 'pronajem', status: null,
+      title: 'Mezonet 3+kk s terasou', loc: 'Plzeň — Bory',
+      price: '28 000 Kč', priceNote: '/ měsíc',
+      params: [['Dispozice','3+kk'],['Plocha','92 m²'],['Terasa','14 m²'],['Parkování','Ano'],['Zařízení','Nezařízeno'],['Dostupné od','Ihned']],
+      desc: 'Moderní mezonet v novostavbě s velkou terasou a vlastním parkovacím stáním. Otevřený obytný prostor v dolním podlaží, dvě ložnice a koupelna nahoře. Energeticky úsporný dům.',
+      images: ['1600585154340-be6161a56a0c','1570129477492-45c003edd2be','1505693416388-ac5ce068fe85']
+    }
+  ];
+
+  var grid = document.getElementById('nabidky-grid');
+
+  function cardHTML(l) {
+    var badge = l.status
+      ? '<span class="absolute top-3 left-3 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ' +
+        (l.status === 'Rezervováno' ? 'bg-ink/85 text-white' : 'bg-cred text-white') + '">' + l.status + '</span>'
+      : '';
+    var tag = l.type === 'prodej' ? 'Prodej' : 'Pronájem';
+    return '' +
+      '<button class="card reveal text-left overflow-hidden flex flex-col" data-id="' + l.id + '" aria-label="Detail: ' + l.title + '">' +
+        '<div class="relative aspect-[4/3] bg-mist overflow-hidden">' +
+          '<img class="w-full h-full object-cover transition duration-500" style="transition-property:transform" alt="' + l.title + ' — ' + l.loc + '" src="' + IMG(l.images[0]) + '" onerror="' + FALLBACK + '" />' +
+          badge +
+          '<span class="absolute top-3 right-3 text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full ' + (l.type === 'prodej' ? 'badge-prodej' : 'badge-pronajem') + '">' + tag + '</span>' +
+        '</div>' +
+        '<div class="p-5 flex flex-col flex-1">' +
+          '<h3 class="font-extrabold text-lg leading-snug">' + l.title + '</h3>' +
+          '<p class="text-ink/55 text-sm mt-1 flex items-center gap-1.5"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>' + l.loc + '</p>' +
+          '<div class="flex items-center gap-3 text-xs text-ink/60 mt-3 font-medium">' +
+            '<span>' + l.params[0][1] + '</span><span class="w-1 h-1 rounded-full bg-line"></span><span>' + l.params[1][1] + '</span>' +
+          '</div>' +
+          '<div class="mt-auto pt-4 flex items-end justify-between">' +
+            '<span class="text-cred font-extrabold text-xl">' + l.price + (l.priceNote ? '<span class="text-ink/45 text-sm font-medium"> ' + l.priceNote + '</span>' : '') + '</span>' +
+            '<span class="text-sm font-bold text-ink/70 flex items-center gap-1">Detail<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg></span>' +
+          '</div>' +
+        '</div>' +
+      '</button>';
+  }
+
+  function renderCards(filter) {
+    grid.innerHTML = listings
+      .filter(function (l) { return filter === 'vse' || l.type === filter; })
+      .map(cardHTML).join('');
+    // reveal + hover zoom + klik
+    Array.prototype.forEach.call(grid.querySelectorAll('.card'), function (el) {
+      if (reduced) { el.classList.add('in'); }
+      else {
+        cardObserver.observe(el);
+        el.addEventListener('mouseenter', function () { var i = el.querySelector('img'); if (i) i.style.transform = 'scale(1.06)'; });
+        el.addEventListener('mouseleave', function () { var i = el.querySelector('img'); if (i) i.style.transform = ''; });
+      }
+      el.addEventListener('click', function () { openModal(el.dataset.id); });
+    });
+  }
+
+  var cardObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); cardObserver.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  // Filtr
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      filterBtns.forEach(function (x) { x.setAttribute('aria-selected', 'false'); });
+      b.setAttribute('aria-selected', 'true');
+      renderCards(b.dataset.filter);
+    });
+  });
+
+  // Modal
+  var modal = document.getElementById('nabidka-modal');
+  var lastFocus = null;
+  function findListing(id) { for (var i = 0; i < listings.length; i++) if (listings[i].id === id) return listings[i]; }
+
+  function openModal(id) {
+    var l = findListing(id);
+    if (!l) return;
+    lastFocus = document.activeElement;
+
+    var main = document.getElementById('modal-main');
+    main.src = IMG(l.images[0]); main.alt = l.title; main.setAttribute('onerror', FALLBACK);
+
+    var badge = document.getElementById('modal-badge');
+    if (l.status) { badge.textContent = l.status; badge.className = 'absolute top-4 left-4 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full ' + (l.status === 'Rezervováno' ? 'bg-ink/85 text-white' : 'bg-cred text-white'); badge.style.display = ''; }
+    else { badge.style.display = 'none'; }
+
+    var thumbs = document.getElementById('modal-thumbs');
+    thumbs.innerHTML = l.images.map(function (im, i) {
+      return '<img class="thumb' + (i === 0 ? ' active' : '') + '" src="' + IMG(im) + '" alt="Náhled ' + (i + 1) + '" data-src="' + IMG(im) + '" />';
+    }).join('');
+    Array.prototype.forEach.call(thumbs.querySelectorAll('.thumb'), function (t) {
+      t.addEventListener('click', function () {
+        main.src = t.dataset.src;
+        thumbs.querySelectorAll('.thumb').forEach(function (x) { x.classList.remove('active'); });
+        t.classList.add('active');
+      });
+    });
+
+    var typeEl = document.getElementById('modal-type');
+    typeEl.textContent = l.type === 'prodej' ? 'Prodej' : 'Pronájem';
+    document.getElementById('modal-title').textContent = l.title;
+    document.querySelector('#modal-loc span').textContent = l.loc;
+    document.getElementById('modal-price').innerHTML = l.price + (l.priceNote ? '<span class="text-ink/45 text-lg font-medium"> ' + l.priceNote + '</span>' : '');
+
+    document.getElementById('modal-params').innerHTML = l.params.map(function (p) {
+      return '<li><span class="block text-xs uppercase tracking-wider text-ink/45 font-bold">' + p[0] + '</span><span class="font-semibold">' + p[1] + '</span></li>';
+    }).join('');
+    document.getElementById('modal-desc').textContent = l.desc;
+
+    // "Mám zájem" předvyplní zprávu v kontaktním formuláři
+    document.getElementById('modal-interest').onclick = function () {
+      var z = document.getElementById('zprava');
+      if (z) z.value = 'Mám zájem o nabídku: ' + l.title + ' (' + l.loc + ').';
+      var lok = document.getElementById('lokalita'); if (lok && !lok.value) lok.value = l.loc;
+      closeModal();
+    };
+
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('modal-close').focus();
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+
+  document.getElementById('modal-close').addEventListener('click', closeModal);
+  document.getElementById('modal-backdrop').addEventListener('click', closeModal);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal(); });
+
+  renderCards('vse');
+})();
+</script>
+</body>
+</html>
